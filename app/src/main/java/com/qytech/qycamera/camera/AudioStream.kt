@@ -28,7 +28,7 @@ class AudioStream(context: Context) {
     private var currentOutput: OutDevices = OutDevices.AUTO
     private var recordThread: Thread? = null
 
-    private fun switchAudioOutput(outDevices: OutDevices) {
+    fun switchAudioOutput(outDevices: OutDevices) {
         if (outDevices == currentOutput) {
             return
         }
