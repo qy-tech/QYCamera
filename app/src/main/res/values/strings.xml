@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QYCamera</string>
+    <string name="file_not_exists">File not exists</string>
+    <string name="switch_camera">Switch camera</string>
+</resources>
