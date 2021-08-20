@@ -180,11 +180,11 @@ class QYCamera2(
      * */
     override fun releaseCamera() {
         runCatching {
+            stopAudioStream()
             session.close()
             camera.close()
             imageReader.close()
             mediaRecorder.stop()
-            stopAudioStream()
         }
     }
 
@@ -571,8 +571,6 @@ class QYCamera2(
     }
 
     private fun stopAudioStream() {
-        if (cameraId == HDMIIN_CAMERA_ID) {
-            audioStream.stop()
-        }
+        audioStream.stop()
     }
 }
