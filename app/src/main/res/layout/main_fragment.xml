@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:visibility="gone"
             app:buttonGap="10dp"
             app:buttonRadius="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,6 +39,7 @@
             android:layout_marginStart="16dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_baseline_folder"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +50,7 @@
             android:background="@android:color/darker_gray"
             android:orientation="horizontal"
             android:padding="16dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 

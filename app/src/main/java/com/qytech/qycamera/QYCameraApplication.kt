@@ -9,8 +9,15 @@ import coil.fetch.VideoFrameUriFetcher
 import coil.util.CoilUtils
 import okhttp3.OkHttpClient
 import timber.log.Timber
+import kotlin.properties.Delegates
 
 class QYCameraApplication : Application(), ImageLoaderFactory {
+
+    companion object {
+        private var instance: QYCameraApplication by Delegates.notNull()
+        fun instance() = instance
+    }
+
     override fun newImageLoader(): ImageLoader {
         return ImageLoader.Builder(applicationContext)
             .componentRegistry {
@@ -29,6 +36,7 @@ class QYCameraApplication : Application(), ImageLoaderFactory {
 
     override fun onCreate() {
         super.onCreate()
+        instance = this
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }

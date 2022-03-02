@@ -124,7 +124,7 @@ class QYCamera2(
             Timber.d("surfaceCreated")
             if (cameraIdList.isNotEmpty()) {
                 if (!::cameraId.isInitialized) {
-                    initCamera(cameraIdList.first())
+                    initCamera(cameraIdList.last())
                 } else {
                     initCamera(cameraId)
                 }
@@ -159,7 +159,9 @@ class QYCamera2(
             imageFormat = getSupportImageFormat()
             // 获取预览和拍照、录像的最大尺寸
             previewSize = getSupportPreviewSize()
-            surfaceView.holder.setFixedSize(previewSize.width, previewSize.height)
+            surfaceView.post {
+                surfaceView.holder.setFixedSize(previewSize.width, previewSize.height)
+            }
 
             imageSize = getSupportImageSize()
             videoSize = getSupportVideoSize()
@@ -565,9 +567,9 @@ class QYCamera2(
         }
 
     private fun startAudioStream() {
-        if (cameraId == HDMIIN_CAMERA_ID) {
-            audioStream.start()
-        }
+        //if (cameraId == HDMIIN_CAMERA_ID) {
+        audioStream.start()
+        //}
     }
 
     private fun stopAudioStream() {

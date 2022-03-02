@@ -44,22 +44,28 @@ class MainFragment : Fragment() {
         qyCamera2 = QYCamera2(requireContext(), dataBinding.viewFinder)
         dataBinding.btnRecord.setOnRecordListener(onRecordList)
 
-        dataBinding.spinnerCameraList.onItemSelectedListener = onItemSelectedListener
+        //dataBinding.spinnerCameraList.onItemSelectedListener = onItemSelectedListener
         dataBinding.ivFileExplorer.setOnClickListener {
             PreviewActivity.start(
                 requireContext(),
                 requireContext().getExternalFilesDir(null)?.absolutePath ?: ""
             )
         }
-        ArrayAdapter<String>(
-            requireContext(),
-            R.layout.simple_spinner_item
-        ).also { adapter ->
-            dataBinding.spinnerCameraList.adapter = adapter
-            adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-            adapter.addAll(qyCamera2.cameraIdList.toMutableList())
-            adapter.notifyDataSetChanged()
-        }
+//        ArrayAdapter<String>(
+//            requireContext(),
+//            R.layout.simple_spinner_item
+//        ).also { adapter ->
+//            dataBinding.spinnerCameraList.adapter = adapter
+//            adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+//            adapter.addAll(qyCamera2.cameraIdList.toMutableList())
+//            adapter.notifyDataSetChanged()
+//        }
+
+//        val cameraId = qyCamera2.cameraIdList.last()
+//            if (cameraId != qyCamera2.cameraId) {
+//                qyCamera2.releaseCamera()
+//                qyCamera2.initCamera(cameraId)
+//            }
         Timber.d("onViewCreated")
     }
 
@@ -68,18 +74,18 @@ class MainFragment : Fragment() {
         qyCamera2.destroy()
     }
 
-    private val onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            val cameraId = qyCamera2.cameraIdList[position]
-            if (cameraId != qyCamera2.cameraId) {
-                qyCamera2.releaseCamera()
-                qyCamera2.initCamera(cameraId)
-            }
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) {
-        }
-    }
+//    private val onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//            val cameraId = qyCamera2.cameraIdList[position]
+//            if (cameraId != qyCamera2.cameraId) {
+//                qyCamera2.releaseCamera()
+//                qyCamera2.initCamera(cameraId)
+//            }
+//        }
+//
+//        override fun onNothingSelected(parent: AdapterView<*>?) {
+//        }
+//    }
 
     private val onRecordList = object : RecordButton.RecordListener {
         override fun onTakePicture() {
